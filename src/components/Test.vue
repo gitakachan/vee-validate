@@ -21,19 +21,34 @@
       </div>
 
       <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
+        <label for="password" class="form-label">密碼</label>
         <Field
           id="password"
           name="密碼"
           type="password"
           class="form-control"
           placeholder="請輸入密碼"
-          :class="{ 'is-invalid': errors[('min', 'max')] }"
+          :class="{ 'is-invalid': errors['密碼'] }"
           rules="required|min:8|max:15"
           v-model="user.password"
         ></Field>
-        <error-message name="password" class="invalid-feedback"></error-message>
+        <error-message name="密碼" class="invalid-feedback"></error-message>
       </div>
+
+      <!-- <div class="mb-3">
+        <label for="name" class="form-label">密碼</label>
+        <Field
+          id="password"
+          name="密碼"
+          type="text"
+          class="form-control"
+          placeholder="請輸入姓名"
+          rules="required"
+          v-model="user.name"
+          :class="{ 'is-invalid': errors['密碼'] }"
+        ></Field>
+        <error-message name="密碼" class="invalid-feedback"></error-message>
+      </div> -->
 
       <div class="mb-3">
         <label for="name" class="form-label">姓名</label>
@@ -45,7 +60,7 @@
           placeholder="請輸入姓名"
           rules="required"
           v-model="user.name"
-          :class="{ 'is-invalid': errors['required'] }"
+          :class="{ 'is-invalid': errors['姓名'] }"
         ></Field>
         <error-message name="姓名" class="invalid-feedback"></error-message>
       </div>
@@ -64,6 +79,7 @@
             regex: /(\d{2,3}-?|\(\d{2,3}\))\d{3,4}-?\d{4}|09\d{2}(\d{6}|-\d{3}-\d{3})/,
             required: true,
           }"
+          :class="{ 'is-invalid': errors['電話'] }"
         ></Field>
         <error-message name="電話" class="invalid-feedback"></error-message>
       </div>
@@ -77,7 +93,7 @@
           class="form-control"
           v-model="user.region"
           as="select"
-          :class="{ 'is-invalid': errors['required'] }"
+          :class="{ 'is-invalid': errors['地區'] }"
           rules="required"
         >
           <option disabled value="">請選擇地區</option>
@@ -96,6 +112,8 @@
           class="form-control"
           placeholder="請輸入地址"
           v-model="user.address"
+          rules="required"
+          :class="{ 'is-invalid': errors['地址'] }"
         ></Field>
         <error-message name="地址" class="invalid-feedback"></error-message>
       </div>
